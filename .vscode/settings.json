@@ -4,6 +4,7 @@
         "Hono",
         "lucide",
         "nextjs",
+        "tanstack",
         "trpc"
     ]
 }
