@@ -15,7 +15,8 @@ import {
 } from "@/db/schema";
 
 const app = new Hono()
-.get("/", 
+.get(
+    "/", 
     zValidator("query", z.object({
         from: z.string().optional(),
         to: z.string().optional(),
