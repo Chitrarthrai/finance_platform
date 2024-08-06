@@ -12,7 +12,7 @@ import { convertAmountToMiliunits } from "@/lib/utils";
 
 import { ImportTable } from "./import-table";
 
-const dateFormat = "yyyy-MM-dd HH:mm:ss";
+const dateFormat = "dd-MM-yyyy HH:mm:ss";
 const outputFormat = "PP";
 
 const requiredOptions = [
@@ -101,7 +101,7 @@ export const ImportCard = ({
         const formattedData = arrayOfData.map((item) => ({
             ...item,
             amount: convertAmountToMiliunits(parseFloat(item.amount)),
-            date: format(parse(item.date, dateFormat, new Date()), outputFormat)
+            date: format(parse(item.date, dateFormat, new Date()), outputFormat),
         }));
 
         onSubmit(formattedData);
