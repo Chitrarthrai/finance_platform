@@ -6,5 +6,6 @@
         "nextjs",
         "tanstack",
         "trpc"
-    ]
+    ],
+    "editor.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace"
 }
