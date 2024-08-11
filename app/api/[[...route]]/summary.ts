@@ -1,4 +1,4 @@
-import { number, z } from "zod";
+import { z } from "zod";
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { clerkMiddleware, getAuth } from "@hono/clerk-auth";
@@ -80,8 +80,8 @@ const app = new Hono()
             );
             const [lastPeriod] = await fetchFinancialData(
                 auth.userId,
-                startDate,
-                endDate,
+                lastPeriodStart,
+                lastPeriodEnd,
             );
 
             const incomeChange = calculatePercentageChange(
