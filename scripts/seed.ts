@@ -49,7 +49,7 @@ const SEED_ACCOUNTS = [
 ];
 
 const defaultTo = new Date();
-const defaultFrom = subDays(defaultTo, 30);
+const defaultFrom = subDays(defaultTo, 60);
 
 const SEED_TRANSACTIONS: (typeof transactions.$inferSelect)[] = [];
 
@@ -110,11 +110,6 @@ generateTransactions();
 
 const main = async () => {
   try {
-    // reset database
-    await db.delete(transactions).execute();
-    await db.delete(accounts).execute();
-    await db.delete(categories).execute();
-
     // seed categories
     await db.insert(categories).values(SEED_CATEGORIES).execute();
     // seed accounts
