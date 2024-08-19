@@ -110,12 +110,34 @@ generateTransactions();
 
 const main = async () => {
   try {
-    // seed categories
-    await db.insert(categories).values(SEED_CATEGORIES).execute();
-    // seed accounts
-    await db.insert(accounts).values(SEED_ACCOUNTS).execute();
-    // seed transactions
-    await db.insert(transactions).values(SEED_TRANSACTIONS).execute();
+    // Seed categories
+    for (const category of SEED_CATEGORIES) {
+      await db
+        .insert(categories)
+        .values(category)
+        .onConflictDoNothing()
+        .execute();
+    }
+
+    // Seed accounts
+    for (const account of SEED_ACCOUNTS) {
+      await db
+        .insert(accounts)
+        .values(account)
+        .onConflictDoNothing()
+        .execute();
+    }
+
+    // Seed transactions
+    for (const transaction of SEED_TRANSACTIONS) {
+      await db
+        .insert(transactions)
+        .values(transaction)
+        .onConflictDoNothing()
+        .execute();
+    }
+
+    console.log("Data seeding completed successfully.");
   } catch (error: unknown) {
     console.error("Error during seed: ", error);
     process.exit(1);
